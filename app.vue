@@ -8,5 +8,6 @@
 <style>
 body{
   font-family: 'Montserrat', sans-serif;
+  background-color: #18181b;
 }
 </style>

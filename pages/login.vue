@@ -2,16 +2,17 @@
 useHead({
   title: 'Авторизация | OnlyBank',
 })
+definePageMeta({
+  layout: false,
+});
 </script>
 
 <template>
-  <div class="w-fill p-7 rounded-3xl h-full bg-zinc-800 text-white shadow-inner">
-
+  <div class="w-full p-7 h-screen  bg-zinc-800 flex justify-center items-center text-white shadow-inner">
+    
   </div>
 </template>
 
 
 
-<style scoped>
-
-</style>
+<style scoped></style>
