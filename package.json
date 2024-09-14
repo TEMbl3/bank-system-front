@@ -12,11 +12,21 @@
   "dependencies": {
     "@nuxt/icon": "^1.5.1",
     "@nuxtjs/google-fonts": "^3.2.0",
+    "chart.js": "^4.4.4",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "lucide-vue-next": "^0.441.0",
     "nuxt": "^3.13.0",
+    "radix-vue": "^1.9.5",
+    "shadcn-nuxt": "^0.10.4",
+    "tailwind-merge": "^2.5.2",
+    "tailwindcss-animate": "^1.0.7",
     "vue": "latest",
+    "vue-chartjs": "^5.3.1",
     "vue-router": "latest"
   },
   "devDependencies": {
+    "@nuxtjs/tailwindcss": "^6.12.1",
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.45",
     "tailwindcss": "^3.4.11"

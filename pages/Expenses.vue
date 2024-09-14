@@ -14,7 +14,7 @@ useHead({
 
 <style scoped>
 .scrol::-webkit-scrollbar {
-width: 22px;
+width: 0;
 }
 .scrol::-webkit-scrollbar-thumb {
   background: #232325;
