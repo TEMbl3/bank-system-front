@@ -10,10 +10,9 @@ const toggleRotate = () => {
     <div class="card" @click="toggleRotate">
       <div class="card-inner" :class="{'cardRotate': Rotate}">
         <div class="front">
-          <img src="https://i.ibb.co/PYss3yv/map.png" class="map-img">
           <div class="row">
-            <img src="https://i.ibb.co/G9pDnYJ/chip.png" width="60px">
-            <img src="https://i.ibb.co/WHZ3nRJ/visa.png" width="60px">
+            <img class="bord" src="https://i.ibb.co/G9pDnYJ/chip.png" width="60px">
+            <img class="bord" src="https://artsmile.by/assets/images/carts/mastercard.png" width="60px">
           </div>
           <div class="row card-no">
             <p>5244 2150 8252 6420</p>
@@ -29,7 +28,6 @@ const toggleRotate = () => {
           </div>
         </div>
         <div class="back">
-          <img src="https://i.ibb.co/PYss3yv/map.png" class="map-img">
           <div class="bar"></div>
           <div class="row card-cvv">
             <div>
@@ -53,7 +51,9 @@ const toggleRotate = () => {
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=josefin+Sans:wght@400;500;600;700&display=swap');
-
+.bord{
+  filter: drop-shadow(0 0 black);
+}
 * {
   margin: 0;
   padding: 0;
@@ -81,8 +81,10 @@ const toggleRotate = () => {
 .back {
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(45deg, #0045c7, #ff2c7d);
+  background-image: url('https://img.wallscloud.net/uploads/thumb/2713430554/macbook_pro_13_m1-1024x576-MM-80.webp');
   position: absolute;
+  background-size: cover;
+  filter: alpha(opacity = 40); 
   top: 0;
   left: 0;
   padding: 20px 30px;

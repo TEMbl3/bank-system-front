@@ -7,7 +7,7 @@ const toggleRotate = () => {
 
 <template>
   <div class="select-none">
-    <div class="card" @click="toggleRotate">
+    <div  class="card" @click="toggleRotate"  >
       <div class="card-inner" :class="{'cardRotate': Rotate}">
         <div class="front">
           <img src="https://i.ibb.co/PYss3yv/map.png" class="map-img">
@@ -79,9 +79,10 @@ const toggleRotate = () => {
 
 .front,
 .back {
+  border: 2px solid white;
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(45deg, #0045c7, #ff2c7d);
+  background-color: rgb(0, 0, 0);
   position: absolute;
   top: 0;
   left: 0;
@@ -119,6 +120,7 @@ const toggleRotate = () => {
   background-color: transparent;
   transition: 0.4s;
 }
+
 
 .card-holder {
   font-size: 12px;
