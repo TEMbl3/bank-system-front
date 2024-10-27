@@ -1,14 +1,15 @@
 <script setup lang="ts">
-import Card from '../components/Card.vue'
-import Chart from '../components/Chart.vue'
-import Tab from '../components/Tab.vue'
+import Card from '@/components/Card.vue'
+import Chart from '@/components/Chart.vue'
+import Tab from '@/components/Tab.vue'
 
 useHead({
   title: 'Главная | OnlyBank'
 })
+
 </script>
 <template>
-  <div class="w-full flex gap-10 scrol overflow-y-auto p-7 rounded-3xl h-full bg-zinc-800 text-white shadow-inner">
+  <div class="w-full flex gap-10 scrol overflow-y-auto p-7 pt-5 rounded-3xl h-full bg-zinc-800 text-white shadow-inner">
     <div class="flex-col">
       <div class="flex gap-12">
         <div class="flex flex-col">
@@ -37,9 +38,11 @@ useHead({
           </div>
         </div>
       </div>
-      <div class="">
+      <div class="flex flex-col ">
         <h2 class="ml-3 text-2xl font-[500] mt-10 mb-3">Последние транзакции</h2>
         <Tab />
+        <NuxtLink to="/Expenses"
+          class="p-3 w-full mt-3 text-center font-[500] hover:bg-zinc-900 transition active:bg-zinc-800 mb-4 rounded-lg bg-zinc-800 border border-zinc-600 shadow">Посмотреть подробнее</NuxtLink>
       </div>
     </div>
     <div class="flex w-fit h-full mb-3 mt-3 flex-col gap-5">
@@ -51,7 +54,7 @@ useHead({
         <div class="">
           <div class="flex m-3 justify-between items-center">
             <h3 class=" font-[500] text-3xl">Мои карты</h3>
-            <p class="text-gray-400">Смотреть все</p>
+            <NuxtLink to="/MyCards" class="text-gray-400">Смотреть все</NuxtLink>
           </div>
           <div class="flex flex-col gap-6 mb-2 px-2 mt-5">
             <div class="w-full p-3 flex justify-center items-center gap-8 h-28 rounded-2xl bg-zinc-800">

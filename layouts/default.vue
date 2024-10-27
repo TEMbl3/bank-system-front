@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Nav from '../components/Nav.vue'
+import Nav from '@/components/Nav.vue'
 </script>
 <template>
   <div class="w-full text-white gap-3 flex bg-zinc-900 p-12 h-screen">

@@ -13,7 +13,7 @@ const toggleRotate = () => {
           <img src="https://i.ibb.co/PYss3yv/map.png" class="map-img">
           <div class="row">
             <img src="https://i.ibb.co/G9pDnYJ/chip.png" width="60px">
-            <img src="https://i.ibb.co/WHZ3nRJ/visa.png" width="60px">
+            <img src="../public/Mir.png" width="60px">
           </div>
           <div class="row card-no">
             <p>5244 2150 8252 6420</p>

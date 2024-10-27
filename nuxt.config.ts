@@ -4,10 +4,11 @@ export default defineNuxtConfig({
   devtools: { enabled: false },
   css: ["~/assets/css/main.css"],
   googleFonts: {
-    families:{
-      Montserrat: [100,300,400,500,700,900]
+    families: {
+      Montserrat: [100, 300, 400, 500, 700, 900],
     },
-    display: 'swap'
+    display: "swap",
+    preconnect: true,
   },
   postcss: {
     plugins: {
@@ -16,15 +17,13 @@ export default defineNuxtConfig({
     },
   },
   shadcn: {
-    /**
-     * Prefix for all the imported component
-     */
     prefix: '',
-    /**
-     * Directory that the component lives in.
-     * @default "./components/ui"
-     */
-    componentDir: './components/ui'
+    componentDir: './components/Ui'
   },
-  modules: ["@nuxtjs/google-fonts", "@nuxt/icon", '@nuxtjs/tailwindcss', "shadcn-nuxt"],
+  modules: [
+    "@nuxtjs/google-fonts",
+    "@nuxt/icon",
+    "@nuxtjs/tailwindcss",
+    "shadcn-nuxt",
+  ],
 });
