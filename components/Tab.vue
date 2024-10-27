@@ -7,12 +7,12 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from './Ui/table'
+} from './ui/table'
 </script>
 
 <template>
   <Table>
-    <TableHeader>
+    <TableHeader class="">
       <TableRow class="hover:bg-zinc-900 rounded-2xl transition text-lg ">
         <TableHead class="text-zinc-400">Тип</TableHead>
         <TableHead class="w-64 text-zinc-400">Карта</TableHead>
