@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Nav from '@/components/Nav.vue'
+import search from '~/components/search.vue';
 </script>
 <template>
   <div class="w-full text-white gap-3 flex bg-zinc-900 p-12 h-screen">
@@ -21,7 +22,7 @@ import Nav from '@/components/Nav.vue'
     </div>
     <div class="flex flex-col h-full w-full">
       <div class="flex justify-between mb-6 items-center">
-        <input placeholder="Поиск" class="w-64 p-3 px-4 rounded-xl bg-zinc-800 focus:outline-none" type="text">
+        <search />
         <div class="w-12 h-12 rounded-3xl bg-zinc-800 mr-5"></div>
       </div>
       <slot />

@@ -3,6 +3,8 @@ useHead({
   title: 'Переводы | OnlyBank',
 })
 
+import alert from '~/components/alert.vue';
+
 const items = ref([1, 2, 3, 4])
 </script>
 
@@ -30,7 +32,7 @@ const items = ref([1, 2, 3, 4])
         <div class="flex ml-auto gap-4 items-center">
           <button
             class="border border-zinc-700 hover:border-zinc-700 rounded px-3 p-2 hover:bg-zinc-900 transition active:bg-zinc-800">Перевести</button>
-          <button class="bg-red-800 hover:bg-red-500 transition active:bg-red-400 px-4 h-10 rounded-lg">X</button>
+          <alert></alert>
         </div>
       </div>
     </div>

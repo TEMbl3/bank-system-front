@@ -4,15 +4,6 @@ useHead({
   title: 'Расходы | OnlyBank',
 })
 
-import {
-  Table,
-  TableBody,
-  TableCaption,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from '@/components/Ui/table';
 
 const items = ref([1, 2, 3, 4])
 </script>
@@ -22,7 +13,11 @@ const items = ref([1, 2, 3, 4])
     <div class="pl-5 pt-5 flex items-center gap-3">
       <NuxtLink to="/"
         class="border cursor-pointer border-zinc-500 p-3 rounded-lg rotate-180 hover:-translate-x-1 transition px-4">
-        <img src="../public/arrow-right.svg" alt="">
+        <svg width="8" height="12" viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 0.999999L6 6L1 11" stroke="#C8C8C8" stroke-width="1.5" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+
       </NuxtLink>
       <h2 class="text-3xl font-[500]">Все транзакции на ваших счетах</h2>
     </div>
@@ -38,8 +33,7 @@ const items = ref([1, 2, 3, 4])
           </TableRow>
         </TableHeader>
         <TableBody class="border-t-[2px] border-gray-500">
-          <TableRow v-for="item in items"
-            class="hover:bg-zinc-900 transition border-t-[1px] border-gray-500">
+          <TableRow v-for="item in items" class="hover:bg-zinc-900 transition border-t-[1px] border-gray-500">
             <TableCell class="font-[500] select-none text-lg">
               Перевод
             </TableCell>
