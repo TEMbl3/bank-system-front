@@ -4,6 +4,7 @@ useHead({
 })
 
 import alert from '~/components/alert.vue';
+import AlertChoseCard from '~/components/AlertChoseCard.vue';
 
 const items = ref([1, 2, 3, 4])
 </script>
@@ -30,8 +31,7 @@ const items = ref([1, 2, 3, 4])
         <p>Номер телефона: +79811601034</p>
         <p>Номер карты: 5555 5555 4444 5555</p>
         <div class="flex ml-auto gap-4 items-center">
-          <button
-            class="border border-zinc-700 hover:border-zinc-700 rounded px-3 p-2 hover:bg-zinc-900 transition active:bg-zinc-800">Перевести</button>
+          <AlertChoseCard />
           <alert></alert>
         </div>
       </div>

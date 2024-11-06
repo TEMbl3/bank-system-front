@@ -39,7 +39,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
           <AccordionTrigger class="text-xl font-semibold transition hover:no-underline hover:text-zinc-300">Как
             просмотреть историю моих транзакций?</AccordionTrigger>
           <AccordionContent class="text-lg text-zinc-400">
-            Историю транзакций можно найти в разделе "Расходы". Там будет список всех переводов, пополнений и других
+            Историю транзакций можно найти в разделе "<nuxt-link class="text-zinc-300 underline" to="/Expenses">Расходы</nuxt-link>". Там будет список всех переводов, пополнений и других
             операций, связанных с вашим аккаунтом.
           </AccordionContent>
         </AccordionItem>
