@@ -51,10 +51,10 @@ const closeDrawer = () => {
           </div>
           <div class="flex w-full font-[500] mt-5 text-center mx-auto border border-zinc-700 rounded-xl">
             <div
-              class="w-[50%] select-none cursor-pointer p-5 border-r hover:bg-zinc-800 transition rounded-l-xl active:bg-zinc-700 border-zinc-700">
+              class="w-[50%] select-none text-xl cursor-pointer p-5 border-r hover:bg-zinc-800 transition rounded-l-xl active:bg-zinc-700 border-zinc-700">
               Пополнить</div>
             <div
-              class="w-[50%] select-none cursor-pointer p-5 hover:bg-zinc-800 transition rounded-r-xl active:bg-zinc-700">
+              class="w-[50%] select-none text-xl cursor-pointer p-5 hover:bg-zinc-800 transition rounded-r-xl active:bg-zinc-700">
               Перевести</div>
           </div>
           <div class="flex flex-col gap-3 mt-5 text-lg">

@@ -13,5 +13,6 @@ export default defineNuxtConfig({
     "@nuxt/icon",
     "@nuxtjs/tailwindcss",
     "shadcn-nuxt",
-  ],
+    '@pinia/nuxt',
+  ], 
 });

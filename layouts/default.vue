@@ -13,11 +13,11 @@ import search from '~/components/search.vue';
       <Nav></Nav>
       <div class="flex-1"></div>
       <div class="mr-10 mb-4">
-        <NuxtLink to="/Account"
+        <button
           class="w-full hover:bg-zinc-800 rounded-xl text-2xl transition flex items-center gap-4 font-[500] p-3">
           <Icon class="text-2xl" name="material-symbols:account-circle-full" />
-          <h2>Аккаунт</h2>
-        </NuxtLink>
+          <h2>Выйти</h2>
+        </button>
       </div>
     </div>
     <div class="flex flex-col h-full w-full">

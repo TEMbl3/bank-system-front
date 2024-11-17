@@ -4,7 +4,7 @@ useHead({
 })
 
 import alert from '~/components/alert.vue';
-import AlertChoseCard from '~/components/AlertChoseCard.vue';
+import AlertChoseCard from '~/components/TransferInTransfers.vue';
 
 const items = ref([1, 2, 3, 4])
 </script>
@@ -29,7 +29,6 @@ const items = ref([1, 2, 3, 4])
           <p class="mt-1">Khruschalev Artem</p>
         </div>
         <p>Номер телефона: +79811601034</p>
-        <p>Номер карты: 5555 5555 4444 5555</p>
         <div class="flex ml-auto gap-4 items-center">
           <AlertChoseCard />
           <alert></alert>
