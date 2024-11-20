@@ -1,4 +1,10 @@
 <script setup lang="ts">
+import Cookies from 'universal-cookie';
+const cookies = new Cookies();
+import { useRouter } from 'vue-router';
+const router = useRouter();
+
+
 useHead({
   title: 'Авторизация | OnlyBank',
 })
@@ -7,21 +13,24 @@ definePageMeta({
 });
 
 import axios from 'axios'
-axios.defaults.baseURL = 'http://localhost:3005'
 
 const email = ref('')
 const password = ref('')
 
 const login = async () => {
   try {
-    let response = await axios.post('/auth/login', {
+    let response = await axios.post('http://localhost:3005/auth/login', {
       email: email.value,
       password: password.value
     })
-    console.log(response.data);  
+    if (response.data.token) {
+      cookies.set('jwt', response.data.token, { path: '/', maxAge: 3600 * 24 * 30 });
+      router.push('/');
+    }
+
   } catch (error) {
     console.log(error);
-    
+
   }
 }
 </script>
@@ -32,7 +41,8 @@ const login = async () => {
     <form @submit.prevent="login" class="flex flex-col gap-5">
       <input v-model="email" class="w-72 p-3 bg-zinc-900 rounded-lg" placeholder="Введите ваш email" type="text">
       <input v-model="password" class="w-72 p-3 bg-zinc-900 rounded-lg" placeholder="Введите ваш пароль" type="text">
-      <button type="submit" class="bg-zinc-900 select-none border-zinc-700 border hover:bg-zinc-800 transition active:bg-zinc-900 p-3 rounded-lg">Войти</button>
+      <button type="submit"
+        class="bg-zinc-900 select-none border-zinc-700 border hover:bg-zinc-800 transition active:bg-zinc-900 p-3 rounded-lg">Войти</button>
     </form>
     <p class="mt-4 text-zinc-200 select-none cursor-pointer">Забыли пароль?</p>
   </div>

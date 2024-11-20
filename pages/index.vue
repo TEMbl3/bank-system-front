@@ -2,6 +2,32 @@
 import Card from '@/components/Card.vue'
 import Chart from '@/components/Chart.vue'
 import Tab from '@/components/Tab.vue'
+import { useRouter } from 'vue-router';
+import Cookies from 'universal-cookie';
+const cookies = new Cookies();
+import axios from 'axios';
+
+// Проверяем токен
+definePageMeta({
+  async middleware() {
+    const router = useRouter();
+    const token = useCookie('jwt').value;
+    if (token) {
+      let response = await axios.get('http://localhost:3005/auth/checkAuth', {
+        headers: {
+          Authorization: `Bearer ${token}`, // Добавляем токен в заголовок
+        },
+      })
+      console.log(response.data.success);
+      if (!response.data.success) {
+        return router.push('/login');
+      }
+    }
+    if (!token) {
+      return router.push('/login');
+    }
+  },
+});
 
 useHead({
   title: 'Главная | OnlyBank'
@@ -42,7 +68,8 @@ useHead({
         <h2 class="ml-3 text-2xl font-[500] mt-10 mb-3">Последние транзакции</h2>
         <Tab />
         <NuxtLink to="/Expenses"
-          class="p-3 w-full mt-3 text-center font-[500] hover:bg-zinc-900 transition active:bg-zinc-800 mb-4 rounded-lg bg-zinc-800 border border-zinc-600 shadow">Посмотреть подробнее</NuxtLink>
+          class="p-3 w-full mt-3 text-center font-[500] hover:bg-zinc-900 transition active:bg-zinc-800 mb-4 rounded-lg bg-zinc-800 border border-zinc-600 shadow">
+          Посмотреть подробнее</NuxtLink>
       </div>
     </div>
     <div class="flex w-fit h-full mb-3 mt-3 flex-col gap-5">

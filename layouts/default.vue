@@ -1,6 +1,15 @@
 <script setup lang="ts">
 import Nav from '@/components/Nav.vue'
 import search from '~/components/search.vue';
+import Cookies from 'universal-cookie';
+const cookies = new Cookies();
+const router = useRouter();
+
+
+const quit = () => {
+  cookies.remove('jwt', { path: '/' });
+  router.push('/login')
+}
 </script>
 <template>
   <div class="w-full text-white gap-3 flex bg-zinc-900 p-12 h-screen">
@@ -13,7 +22,7 @@ import search from '~/components/search.vue';
       <Nav></Nav>
       <div class="flex-1"></div>
       <div class="mr-10 mb-4">
-        <button
+        <button @click="quit()"
           class="w-full hover:bg-zinc-800 rounded-xl text-2xl transition flex items-center gap-4 font-[500] p-3">
           <Icon class="text-2xl" name="material-symbols:account-circle-full" />
           <h2>Выйти</h2>
