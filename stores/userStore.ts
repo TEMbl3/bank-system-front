@@ -1,30 +1,30 @@
-import { defineStore } from "pinia";
+import { defineStore } from 'pinia';
 
-//Типы для user
-import type { IUser } from "../interfaces";
+// Тип для пользователя
+import type { IUser } from '../interfaces';
 
 interface IUserState {
   user: IUser | null;
 }
 
-export const useUserStore = defineStore<'user', IUserState>({
-  id: 'user',
+export const useUserStore = defineStore('user', {
   state: (): IUserState => ({
-    user: null
+    user: null,
   }),
   getters: {
-    getUserName (state): string {
+    getUserName(state): string {
       return state.user ? state.user.fullName : '';
-    }
+    },
+    getUser(state) {
+      return state.user ? state.user : '';
+    },
   },
   actions: {
-    setUser(user: IUser) {
-      this.user = user;
+    setUser(data: IUser) {
+      this.user = data;
     },
     clearUser() {
       this.user = null;
-    }
-  }
-})
-
-
+    },
+  },
+});

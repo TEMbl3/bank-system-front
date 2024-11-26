@@ -6,7 +6,6 @@ export interface IUser {
   fullName: string;
   email: string;
   phoneNumber: string;
-  passwordHash: string;
   avatarUrl?: string;
   cards?: Types.ObjectId[];
 }

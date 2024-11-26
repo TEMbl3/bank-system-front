@@ -1,29 +1,16 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
 import Cookies from 'universal-cookie';
-const cookies = new Cookies();
 import axios from 'axios';
+import { useUserStore } from '../stores/userStore.ts';
+import middleware from '@/controllers/middleware.ts'
+
+const store = useUserStore();
+const cookies = new Cookies();
 
 // Проверяем токен
 definePageMeta({
-  async middleware() {
-    const router = useRouter();
-    const token = useCookie('jwt').value;
-    if (token) {
-      let response = await axios.get('http://localhost:3005/auth/checkAuth', {
-        headers: {
-          Authorization: `Bearer ${token}`, // Добавляем токен в заголовок
-        },
-      })
-      console.log(response.data.success);
-      if (!response.data.success) {
-        return router.push('/login');
-      }
-    }
-    if (!token) {
-      return router.push('/login');
-    }
-  },
+  async middleware() { await middleware() }
 });
 
 useHead({
@@ -31,7 +18,19 @@ useHead({
 })
 
 
-const items = ref([1, 2, 3, 4])
+const transfers = ref([])
+const user = store.user
+
+onMounted(async() => {
+  const token = useCookie('jwt').value;
+  let response = await axios.get('http://localhost:3005/card/getTransfers', {
+      headers: {
+        Authorization: `Bearer ${token}`, // Добавляем токен в заголовок
+      },
+    })
+    transfers.value = response.data
+    
+})
 </script>
 
 <template>
@@ -59,18 +58,18 @@ const items = ref([1, 2, 3, 4])
           </TableRow>
         </TableHeader>
         <TableBody class="border-t-[2px] border-gray-500">
-          <TableRow v-for="item in items" class="hover:bg-zinc-900 transition border-t-[1px] border-gray-500">
+          <TableRow v-for="item in transfers" class="hover:bg-zinc-900 transition border-t-[1px] border-gray-500">
             <TableCell class="font-[500] select-none text-lg">
               Перевод
             </TableCell>
             <TableCell>5555 5555 5555 4444</TableCell>
             <TableCell>15 октября в 15:03</TableCell>
-            <TableCell>Khruschalev Artem</TableCell>
-            <TableCell class="text-right text-red-500">
-              -250.00$
+            <TableCell>{{ item.senderName }}</TableCell>
+            <TableCell :class="{'text-red-500': user.fullName === item.recipientName, 'text-green-500': user.fullName === item.senderName}" class="text-right">
+              {{ user.fullName === item.senderName ? '+' : '-' }}{{ item.amount }}.00$
             </TableCell>
           </TableRow>
-          <TableRow v-for="item in items" class="hover:bg-zinc-900 transition border-t-[1px] border-gray-500">
+          <!-- <TableRow v-for="item in items" class="hover:bg-zinc-900 transition border-t-[1px] border-gray-500">
             <TableCell class="font-[500] select-none text-lg">
               Перевод
             </TableCell>
@@ -80,7 +79,7 @@ const items = ref([1, 2, 3, 4])
             <TableCell class="text-right text-green-500">
               +250.00$
             </TableCell>
-          </TableRow>
+          </TableRow> -->
         </TableBody>
       </Table>
     </div>

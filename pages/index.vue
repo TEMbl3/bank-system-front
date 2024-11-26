@@ -4,29 +4,13 @@ import Chart from '@/components/Chart.vue'
 import Tab from '@/components/Tab.vue'
 import { useRouter } from 'vue-router';
 import Cookies from 'universal-cookie';
-const cookies = new Cookies();
 import axios from 'axios';
+import middleware from '@/controllers/middleware.ts'
 
-// Проверяем токен
+const cookies = new Cookies();
+
 definePageMeta({
-  async middleware() {
-    const router = useRouter();
-    const token = useCookie('jwt').value;
-    if (token) {
-      let response = await axios.get('http://localhost:3005/auth/checkAuth', {
-        headers: {
-          Authorization: `Bearer ${token}`, // Добавляем токен в заголовок
-        },
-      })
-      console.log(response.data.success);
-      if (!response.data.success) {
-        return router.push('/login');
-      }
-    }
-    if (!token) {
-      return router.push('/login');
-    }
-  },
+  async middleware() { await middleware() }
 });
 
 useHead({

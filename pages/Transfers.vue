@@ -4,29 +4,14 @@ useHead({
 })
 import { useRouter } from 'vue-router';
 import Cookies from 'universal-cookie';
-const cookies = new Cookies();
 import axios from 'axios';
+import middleware from '@/controllers/middleware.ts'
+
+const cookies = new Cookies();
 
 // Проверяем токен
 definePageMeta({
-  async middleware() {
-    const router = useRouter();
-    const token = useCookie('jwt').value;
-    if (token) {
-      let response = await axios.get('http://localhost:3005/auth/checkAuth', {
-        headers: {
-          Authorization: `Bearer ${token}`, // Добавляем токен в заголовок
-        },
-      })
-      console.log(response.data.success);
-      if (!response.data.success) {
-        return router.push('/login');
-      }
-    }
-    if (!token) {
-      return router.push('/login');
-    }
-  },
+  async middleware() { await middleware() }
 });
 
 import alert from '~/components/alert.vue';
@@ -36,7 +21,8 @@ const items = ref([1, 2, 3, 4])
 </script>
 
 <template>
-  <div class="min-w-full overflow-x-hidden w-full p-7 px-9 rounded-3xl h-full scrol overflow-y-auto bg-zinc-800 text-white shadow-inner">
+  <div
+    class="min-w-full overflow-x-hidden w-full p-7 px-9 rounded-3xl h-full scrol overflow-y-auto bg-zinc-800 text-white shadow-inner">
     <div class="flex items-center justify-between mt-2">
       <h2 class="text-3xl font-semibold">Мои контакты</h2>
       <div class="flex items-center gap-5">
