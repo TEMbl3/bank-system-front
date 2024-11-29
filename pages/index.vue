@@ -1,13 +1,15 @@
 <script setup lang="ts">
+import middleware from '@/controllers/middleware'
 import Card from '@/components/Card.vue'
 import Chart from '@/components/Chart.vue'
 import Tab from '@/components/Tab.vue'
-import { useRouter } from 'vue-router';
 import Cookies from 'universal-cookie';
-import axios from 'axios';
-import middleware from '@/controllers/middleware.ts'
+import { useUserStore } from '@/stores/userStore';
 
-const cookies = new Cookies();
+
+const store = useUserStore();
+
+const user = store.user
 
 definePageMeta({
   async middleware() { await middleware() }
@@ -56,7 +58,7 @@ useHead({
           Посмотреть подробнее</NuxtLink>
       </div>
     </div>
-    <div class="flex w-fit h-full mb-3 mt-3 flex-col gap-5">
+    <div class="flex w-fit mb-3 mt-3 flex-col gap-5">
       <h2 class="font-[500] text-2xl ml-3">Расходы за 7 дней</h2>
       <div class="bg-zinc-900  h-full flex flex-col pb-3 gap-4 w-full rounded-xl p-4">
         <h3 class="m-3 font-[400] text-2xl flex items-center gap-3">Потратил за сегодня: <span

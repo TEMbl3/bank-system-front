@@ -2,8 +2,9 @@
 import { useRouter } from 'vue-router';
 import Cookies from 'universal-cookie';
 import axios from 'axios';
-import { useUserStore } from '../stores/userStore.ts';
-import middleware from '@/controllers/middleware.ts'
+import { useUserStore } from '@/stores/userStore';
+import type { ITransfer } from '@/interfaces';
+import middleware from '@/controllers/middleware'
 
 const store = useUserStore();
 const cookies = new Cookies();
@@ -17,19 +18,18 @@ useHead({
   title: 'Расходы | OnlyBank',
 })
 
-
-const transfers = ref([])
+const transfers = ref<ITransfer[]>([])
 const user = store.user
 
-onMounted(async() => {
+onMounted(async () => {
   const token = useCookie('jwt').value;
   let response = await axios.get('http://localhost:3005/card/getTransfers', {
-      headers: {
-        Authorization: `Bearer ${token}`, // Добавляем токен в заголовок
-      },
-    })
-    transfers.value = response.data
-    
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  })
+  transfers.value = response.data
+
 })
 </script>
 
@@ -62,24 +62,15 @@ onMounted(async() => {
             <TableCell class="font-[500] select-none text-lg">
               Перевод
             </TableCell>
-            <TableCell>5555 5555 5555 4444</TableCell>
-            <TableCell>15 октября в 15:03</TableCell>
-            <TableCell>{{ item.senderName }}</TableCell>
-            <TableCell :class="{'text-red-500': user.fullName === item.recipientName, 'text-green-500': user.fullName === item.senderName}" class="text-right">
-              {{ user.fullName === item.senderName ? '+' : '-' }}{{ item.amount }}.00$
+            <TableCell>{{ (item.senderName === user?.fullName ? item.senderCard : item.recipientCard).replace(/(\d{4})/g, '$1 ').trim() }}</TableCell>
+            <TableCell>{{ item.createdAt }}</TableCell>
+            <TableCell>{{ item.senderName === user?.fullName ? item.recipientName : item.senderName }}</TableCell>
+            <TableCell
+              :class="{ 'text-red-500': user?.fullName === item.recipientName, 'text-green-500': user?.fullName === item.senderName }"
+              class="text-right">
+              {{ user?.fullName === item.senderName ? '+' : '-' }}{{ item.amount }}.00$
             </TableCell>
           </TableRow>
-          <!-- <TableRow v-for="item in items" class="hover:bg-zinc-900 transition border-t-[1px] border-gray-500">
-            <TableCell class="font-[500] select-none text-lg">
-              Перевод
-            </TableCell>
-            <TableCell>5555 5555 5555 4444</TableCell>
-            <TableCell>26.01.2024</TableCell>
-            <TableCell>Rodionov Roman</TableCell>
-            <TableCell class="text-right text-green-500">
-              +250.00$
-            </TableCell>
-          </TableRow> -->
         </TableBody>
       </Table>
     </div>

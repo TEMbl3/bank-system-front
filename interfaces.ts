@@ -20,3 +20,13 @@ export interface ICard {
   balance: number;
   userId: Types.ObjectId;
 }
+
+export interface ITransfer {
+  _id: Types.ObjectId;
+  senderCard: string;
+  senderName: string;
+  recipientCard: string;
+  recipientName: string;
+  amount: number;
+  createdAt: Date;
+}

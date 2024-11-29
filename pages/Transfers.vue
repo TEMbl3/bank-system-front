@@ -5,7 +5,7 @@ useHead({
 import { useRouter } from 'vue-router';
 import Cookies from 'universal-cookie';
 import axios from 'axios';
-import middleware from '@/controllers/middleware.ts'
+import middleware from '@/controllers/middleware'
 
 const cookies = new Cookies();
 

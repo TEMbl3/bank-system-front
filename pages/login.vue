@@ -2,7 +2,6 @@
 import Cookies from 'universal-cookie';
 import { useRouter } from 'vue-router';
 import { useUserStore } from '../stores/userStore';
-import middleware from '@/controllers/middleware.ts'
 import axios from 'axios'
 import type { IUser } from '~/interfaces.ts';
 

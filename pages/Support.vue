@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
 import Cookies from 'universal-cookie';
-import middleware from '@/controllers/middleware.ts'
+import middleware from '@/controllers/middleware'
 import axios from 'axios';
 
 const cookies = new Cookies();
